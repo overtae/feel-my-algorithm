@@ -9,7 +9,7 @@ class Solution {
 //         return answer
         
         return (0..t.length-p.length).filter {
-            t.substring(it, it+p.length).toLong() <= p.toLong()
+            t.substring(it, it+p.length) <= p
         }.size
     }
 }
