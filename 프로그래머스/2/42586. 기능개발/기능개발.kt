@@ -7,9 +7,9 @@ class Solution {
         var max = 0
         var day = -1
         
-        for (i in days.indices) {
-            if (max < days[i]) {
-                max = days[i]
+        for (d in days) {
+            if (max < d) {
+                max = d
                 day++
             }
             answer[day]++
