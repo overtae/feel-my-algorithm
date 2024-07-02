@@ -4,7 +4,6 @@ class Solution {
     fun solution(x: Int, y: Int, n: Int): Int {
         var visited: HashMap<Int, Boolean> = hashMapOf()
         var q: Queue<Pair<Int, Int>> = LinkedList()
-        var answer: Int = 1000000
         
         fun exec(y: Int, type: Int) = when (type) {
             0 -> y - n
@@ -12,17 +11,13 @@ class Solution {
             else -> if (y % 3 == 0) y / 3 else 0
         }
         
-        fun solve(y: Int, cnt: Int) {
+        fun solve(y: Int, cnt: Int): Int {
             q.add(y to cnt)
             
             while (q.isNotEmpty()) {
-                // 첫 번재 Pair 값 대입 및 삭제
                 val (current, count) = q.poll()
 
-                if (current == x) {
-                    answer = count
-                    return
-                }
+                if (current == x) return count
 
                 (0..2).map {
                     val next = exec(current, it)
@@ -32,34 +27,9 @@ class Solution {
                     }
                 }
             }
-            answer = -1
-            return
+            return -1
         }
         
-        solve(y, 0)
-        
-        return answer
+        return solve(y, 0)
     }
 }
-
-// const bfs=()=>{
-//     let queue=[[y,0]];
-//     let visit={};
-//     visit[y]=1;
-
-//     while(queue.length){
-//         let [cur,count]=queue.shift();
-
-//         if(cur===x) return count;
-
-//         for(let i=0;i<3;++i){
-//             let next=calc(cur,i);
-//             if(next>=x && !visit[next]){
-//                 visit[next]=1;
-//                 queue.push([next,count+1]);
-//             }
-//         }
-//     }
-
-//     return -1;
-// }
