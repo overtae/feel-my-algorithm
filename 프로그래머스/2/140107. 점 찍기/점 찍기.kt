@@ -4,7 +4,7 @@ class Solution {
         // x^2 + y^2 = d^2
         // y^2 = d^2 - x^2
         return (0..d step k).fold(0L) { total, x ->
-            val y = d.toLong()*d - x.toLong()*x
+            val y = d*d.toLong() - x*x.toLong()
             total + Math.sqrt(y.toDouble()).toLong() / k + 1
         }
     }
